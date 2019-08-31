@@ -34,7 +34,10 @@ window.onload = function() {
 		socket.send(`JOIN #${window.reqName}`);
 	};
 
-	window.message = function message(message) {
+	window.message = function message(message, action) {
+		if (action === true) {
+			message = `ACTION ${message}`;
+		}
 		// Send the message through the WebSocket.
 		socket.send(`PRIVMSG #${ reqName } :` + message);
 
@@ -61,8 +64,16 @@ window.onload = function() {
 		};
 		var VvV = msg.split(`PRIVMSG #${ window.reqName } :`);
 		switch (VvV[(VvV.length - 1)].toLowerCase().replace(decodeURIComponent("%0D%0A"), "")) {
-			case "!test":
-				message("Test Complete! " + Math.floor(Math.random() * (1000 - 1 + 1) + 1)); // Needs random number to be able to not get caught by duplication... (I know this is a stupid fix)
+			case "!ping":
+				message("Pong!");
+				break;
+				/*
+				case "!test":
+					message("Test Complete! " + Math.floor(Math.random() * (1000 - 1 + 1) + 1)); // Needs random number to be able to not get caught by duplication... (I know this is a stupid fix)
+					break;
+				*/
+			case "!about":
+				message("Admin's Bot Project [V0.0.1] This is a Git-Hub Project created by YouTubeAdmin. This is a work in progress. :) " + Math.floor(Math.random() * (1000 - 1 + 1) + 1));
 				break;
 		}
 	};
