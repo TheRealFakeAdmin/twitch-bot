@@ -76,6 +76,10 @@ ul li span {
 
 .received {}
 
+.info {
+	background-color: #7FFFD4;
+}
+
 #message-form {
 	margin-top: 1.5rem;
 }
