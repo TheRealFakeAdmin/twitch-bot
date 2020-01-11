@@ -1,2 +1,2 @@
-Base Script courtesy of:
+Base HTML, CSS, and JS courtesy of:
   https://blog.teamtreehouse.com/an-introduction-to-websockets
