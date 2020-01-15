@@ -12,19 +12,13 @@ window.onload = function() {
 	window.buttChance = 15;
 	window.lurking = false;
 	var runButt = false; // This was requested by a streamer friend (It's an inside joke)
-	var preName = getAllUrlParams().name || Streamer.toLowerCase();
 	var preCmds = getAllUrlParams().cmds;
-	if (preName !== undefined) {
-		window.reqName = decodeURIComponent(preName);
-	}
 
 	if (preCmds !== undefined) {
 		window.cmds = decodeURIComponent(preCmds);
 	}
-	if (window.reqName === undefined) {
-		window.reqName = window.prompt("Chat Name:");
-		window.reqName = window.reqName.toLowerCase();
-	}
+	window.reqName = Streamer.toLowerCase();
+
 	// Get references to elements on the page.
 	var form = document.getElementById('message-form');
 	var messageField = document.getElementById('message');
@@ -211,7 +205,7 @@ window.onload = function() {
 				break;
 			}
 		}
-		if (isGod || !window.noAccess.includes(usr.toLowerCase()) /* Checks if user is in ban list */ */ && !window.lurking) { // <-- Please do not change this line
+		if (isGod || !window.noAccess.includes(usr.toLowerCase()) /* Checks if user is in ban list */ && !window.lurking) { // <-- Please do not change this line
 			switch (calr) { // Enter any custom command you want :)
 				case "-ping":
 					window.message(`@${usr} Pong!`, true);
